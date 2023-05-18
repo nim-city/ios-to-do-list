@@ -1,0 +1,22 @@
+All Tasks
+
+- Create welcome screen
+- Create all to do items screen
+- Create all to buy items screen
+- Create today's agenda screen
+- Create to do item entity
+- Create to buy item entity
+- Create add and delete to do item functions
+- Create add and delete to buy item functions
+- Display all to do items
+- Display all to buy items
+- Display today's agenda
+- Create all to do items selection screen
+- Implement item selection
+- Update layout
+- Beautify
+- Add unit tests
+- Publish to github
+- Add certificates, signing, etc to run on iphone
+- Publish to app store
+- Create to do item framework

@@ -1,0 +1,34 @@
+/* 
+  allStrings.strings
+  ToDoList
+
+  Created by Nimish Narang on 2023-04-03.
+  
+*/
+
+// General use
+"yes" = "Yes";
+"no" = "No";
+"cancel" = "Cancel";
+"delete" = "Delete";
+
+// Pop ups
+"pop_up_text_clear_todays_agenda" = "Remove all items from today's agenda?";
+"pop_up_text_clear_to_do_items" = "Delete all to do items?";
+"pop_up_text_clear_to_buy_items" = "Delete all to buy items?";
+"pop_up_text_remove_item" = "Remove this item?";
+
+// Titles
+"title_todays_agenda" = "Today's Agenda";
+"title_to_do_list" = "To Do List";
+"title_to_buy_list" = "To Buy List";
+"section_title_high_priority" = "High Priority";
+"section_title_low_priority" = "Low Priority";
+"section_title_short_term" = "Short Term";
+"section_title_long_term" = "Long Term";
+"title_new_to_buy_item" = "New To Buy Item";
+"title_new_to_do_item" = "New To Do Item";
+
+
+// TodaysAgendaTableViewController
+
