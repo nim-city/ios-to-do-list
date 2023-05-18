@@ -33,7 +33,7 @@ class ToDoItemsViewController: UIViewController {
     
     
     private func showDeleteAlertForItem(_ toDoItem: ToDoItem) {
-        let alertController = UIAlertController(title: Localization.getStringForKey(.removeItemText), message: nil, preferredStyle: .actionSheet)
+        let alertController = UIAlertController(title: Localization.getStringForKey(.deleteItemText), message: nil, preferredStyle: .actionSheet)
         let deleteAction = UIAlertAction(title: Localization.getStringForKey(.yes), style: .destructive, handler: { [weak self] _ in
             let _ = ToDoItemFunctions.instance.deleteToDoItem(toDoItem)
             self?.itemListDelegate?.itemListWasChanged()

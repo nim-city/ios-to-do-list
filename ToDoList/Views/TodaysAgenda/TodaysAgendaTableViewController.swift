@@ -29,20 +29,6 @@ class TodaysAgendaViewController: UIViewController {
     func reloadData() {
         tableView.reloadData()
     }
-    
-    
-    private func showDeleteAlertForItem(_ toDoItem: ToDoItem) {
-        let alertController = UIAlertController(title: Localization.getStringForKey(.removeItemText), message: nil, preferredStyle: .actionSheet)
-        let deleteAction = UIAlertAction(title: Localization.getStringForKey(.yes), style: .destructive, handler: { [weak self] _ in
-            let _ = ToDoItemFunctions.instance.deleteToDoItem(toDoItem)
-            self?.reloadData()
-        })
-        let cancelAction = UIAlertAction(title: Localization.getStringForKey(.no), style: .cancel, handler: nil)
-        alertController.addAction(deleteAction)
-        alertController.addAction(cancelAction)
-        present(alertController, animated: true, completion: nil)
-    }
-
 }
 
 
@@ -89,8 +75,9 @@ extension TodaysAgendaViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteSwipeAction = UIContextualAction(style: .destructive, title: Localization.getStringForKey(.delete), handler: { [weak self] _, _, _ in
-            guard let itemToDelete = self?.toDoItems[indexPath.row] else { return }
-            self?.showDeleteAlertForItem(itemToDelete)
+            guard let toDoItem = self?.toDoItems[indexPath.row] else { return }
+            let _ = TodaysAgendaFunctions.instance.unselectItem(toDoItem)
+            self?.reloadData()
         })
         deleteSwipeAction.image = UIImage(systemName: UIConstants.trashImage)
         let swipeActionConfiguration = UISwipeActionsConfiguration(actions: [deleteSwipeAction])

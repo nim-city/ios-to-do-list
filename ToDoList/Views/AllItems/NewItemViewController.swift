@@ -24,6 +24,7 @@ class NewItemViewController: UIViewController {
     
     weak var itemListDelegate: ItemListDelegate?
     
+    var saveClosure: (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,7 +87,9 @@ class NewItemViewController: UIViewController {
         let wasSaveSuccessful = itemListMode == .toBuyItems ? saveToBuyItem() : saveToDoItem()
         if wasSaveSuccessful {
             itemListDelegate?.itemListWasChanged()
-            dismiss(animated: true, completion: nil)
+            dismiss(animated: true, completion: { [weak self] in
+                self?.saveClosure?()
+            })
         }
     }
     

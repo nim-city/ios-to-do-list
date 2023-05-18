@@ -33,7 +33,7 @@ class ToBuyItemsViewController: UIViewController {
     
     
     private func showDeleteAlertForItem(_ toBuyItem: ToBuyItem) {
-        let alertController = UIAlertController(title: Localization.getStringForKey(.removeItemText), message: nil, preferredStyle: .actionSheet)
+        let alertController = UIAlertController(title: Localization.getStringForKey(.deleteItemText), message: nil, preferredStyle: .actionSheet)
         let deleteAction = UIAlertAction(title: Localization.getStringForKey(.yes), style: .destructive, handler: { [weak self] _ in
             let _ = ToBuyItemFunctions.instance.deleteToBuyItem(toBuyItem)
             self?.itemListDelegate?.itemListWasChanged()

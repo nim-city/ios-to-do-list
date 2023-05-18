@@ -143,11 +143,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="rFO-e4-Rtv">
-                                <rect key="frame" x="20" y="90" width="374" height="718"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
-                            </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qmz-bs-2Hh" userLabel="TopView">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
                                 <subviews>
@@ -193,29 +188,50 @@
                                     <constraint firstItem="O9C-d2-xGL" firstAttribute="leading" secondItem="Qmz-bs-2Hh" secondAttribute="leading" id="dCP-f2-Ept"/>
                                 </constraints>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="rFO-e4-Rtv">
+                                <rect key="frame" x="20" y="132" width="374" height="676"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aiD-Lu-n4O">
+                                <rect key="frame" x="20" y="90" width="374" height="32"/>
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="plus.circle" catalog="system" title="Add new to do item" imagePadding="10">
+                                    <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="15"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="pressAddNewItemButton:" destination="F1c-RY-cvn" eventType="touchUpInside" id="udi-fn-JeT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="oKc-d6-X5k"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="oKc-d6-X5k" firstAttribute="trailing" secondItem="rFO-e4-Rtv" secondAttribute="trailing" constant="20" id="0fd-AI-gxI"/>
+                            <constraint firstItem="oKc-d6-X5k" firstAttribute="trailing" secondItem="aiD-Lu-n4O" secondAttribute="trailing" constant="20" id="5Zx-4d-ELl"/>
+                            <constraint firstItem="rFO-e4-Rtv" firstAttribute="top" secondItem="aiD-Lu-n4O" secondAttribute="bottom" constant="10" id="87Q-J1-H1e"/>
+                            <constraint firstItem="aiD-Lu-n4O" firstAttribute="top" secondItem="Qmz-bs-2Hh" secondAttribute="bottom" constant="20" id="JyU-wi-5cm"/>
                             <constraint firstItem="Qmz-bs-2Hh" firstAttribute="top" secondItem="oKc-d6-X5k" secondAttribute="top" id="K1G-V6-3H2"/>
                             <constraint firstItem="Qmz-bs-2Hh" firstAttribute="leading" secondItem="oKc-d6-X5k" secondAttribute="leading" id="L97-mp-h8b"/>
+                            <constraint firstItem="aiD-Lu-n4O" firstAttribute="leading" secondItem="oKc-d6-X5k" secondAttribute="leading" constant="20" id="Plw-I4-Ur8"/>
                             <constraint firstAttribute="trailing" secondItem="Qmz-bs-2Hh" secondAttribute="trailing" id="TMG-6K-ddp"/>
                             <constraint firstItem="oKc-d6-X5k" firstAttribute="bottom" secondItem="rFO-e4-Rtv" secondAttribute="bottom" id="Zqv-q6-3vF"/>
                             <constraint firstItem="rFO-e4-Rtv" firstAttribute="leading" secondItem="oKc-d6-X5k" secondAttribute="leading" constant="20" id="f0k-oC-dme"/>
-                            <constraint firstItem="rFO-e4-Rtv" firstAttribute="top" secondItem="Qmz-bs-2Hh" secondAttribute="bottom" constant="20" id="laY-mF-VcB"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Ugr-4j-J3o"/>
                     <connections>
+                        <outlet property="addNewItemButton" destination="aiD-Lu-n4O" id="SCg-Zy-wWe"/>
                         <outlet property="saveButton" destination="c0Z-a6-912" id="ilo-1H-RL3"/>
                         <outlet property="tableView" destination="rFO-e4-Rtv" id="gFm-uU-UVh"/>
                         <outlet property="topView" destination="Qmz-bs-2Hh" id="ddc-1f-eJd"/>
+                        <segue destination="0BH-iS-KNq" kind="show" identifier="showNewItemSegue" id="MrM-ie-06F"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IsD-Jc-aYy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1780" y="-484"/>
+            <point key="canvasLocation" x="1779.7101449275365" y="-484.15178571428567"/>
         </scene>
         <!--Main Tab Bar Controller-->
         <scene sceneID="0BJ-4M-7qZ">
@@ -359,11 +375,11 @@
             <objects>
                 <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="0BH-iS-KNq" customClass="NewItemViewController" customModule="ToDoList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ddx-Hp-oev">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view alpha="0.84999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sZm-kQ-cMv" userLabel="BackgroundView">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="PNY-2S-OEH">
                                         <rect key="frame" x="152" y="348" width="110" height="200"/>
@@ -377,7 +393,7 @@
                                 </connections>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fhW-de-LIq">
-                                <rect key="frame" x="40" y="246" width="334" height="364.5"/>
+                                <rect key="frame" x="40" y="219" width="334" height="364.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="To Do Item" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k8d-sC-xua">
                                         <rect key="frame" x="118.5" y="20" width="97.5" height="24"/>
@@ -611,12 +627,16 @@
             <point key="canvasLocation" x="1780" y="710"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="MrM-ie-06F"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.backward" catalog="system" width="128" height="98"/>
         <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="clear" catalog="system" width="128" height="114"/>
         <image name="list.bullet" catalog="system" width="128" height="88"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="plus.circle" catalog="system" width="128" height="121"/>
         <image name="plus.rectangle.on.rectangle" catalog="system" width="128" height="97"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -20,6 +20,7 @@ class Localization {
         case clearToDoItemsText = "pop_up_text_clear_to_do_items"
         case clearToBuyItemsText = "pop_up_text_clear_to_buy_items"
         case removeItemText = "pop_up_text_remove_item"
+        case deleteItemText = "pop_up_text_delete_item"
         
         // Titles
         case todaysAgendaTitle = "title_todays_agenda"

@@ -1,1 +1,14 @@
-Current version: 1.0
+Current version: 1.1
+
+Version 1.1
+- Fixed bug where today's agenda items were being deleted permanently upon removal
+- Added ability to add new to do items from select items screen
+- Updated texts
+- Added version control
+
+Version 1.0
+- Created basic to do list with to do item, to buy item, and today's agenda functionality
+- Can add to do and to buy items
+- Can select to do items for today's agenda
+- Can delete to do and to buy items individually or altogether
+- Can remove to do items from today's agenda individually or altogether

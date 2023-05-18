@@ -25,6 +25,8 @@ class UIConstants {
     static let unselectedControlColour = UIColor(red: 215/255, green: 215/255, blue: 215/255, alpha: 0.5)
     static let selectedTabBarColour = UIColor.black
     static let unselectedTabBarColour = UIColor(red: 90/255, green: 90/255, blue: 90/255, alpha: 1.0)
+    // Texts
+    static let offBlack = UIColor(red: 65/255, green: 65/255, blue: 65/255, alpha: 1.0)
     
 
     // Sizes

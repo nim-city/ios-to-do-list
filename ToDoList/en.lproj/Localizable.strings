@@ -17,6 +17,7 @@
 "pop_up_text_clear_to_do_items" = "Delete all to do items?";
 "pop_up_text_clear_to_buy_items" = "Delete all to buy items?";
 "pop_up_text_remove_item" = "Remove this item?";
+"pop_up_text_delete_item" = "Delete this item?";
 
 // Titles
 "title_todays_agenda" = "Today's Agenda";

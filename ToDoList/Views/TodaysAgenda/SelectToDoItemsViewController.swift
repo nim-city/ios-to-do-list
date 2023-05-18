@@ -7,19 +7,27 @@
 
 import UIKit
 
-// TODO: Need to change toDoItems to actual list of ToDoItems
-// TODO: Need list of selected items and completion handler to call when done
 class SelectToDoItemsViewController: UIViewController {
 
+    private enum Segues: String {
+        case showNewItemSegue = "showNewItemSegue"
+    }
+    
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var addNewItemButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
     weak var itemListDelegate: ItemListDelegate?
     
-    private var toDoItems: [ToDoItem] {
-        guard let toDoItems = itemListDelegate?.toDoItems else { return [] }
-        return toDoItems.filter({ !$0.isOnAgenda })
+    private var highPriorityToDoItems: [ToDoItem] {
+        return itemListDelegate?.toDoItems.filter({ $0.isHighPriority }) ?? []
+    }
+    private var shortTermToDoItems: [ToDoItem] {
+        return itemListDelegate?.toDoItems.filter({ !$0.isHighPriority && !$0.isLongTerm }) ?? []
+    }
+    private var longTermToDoItems: [ToDoItem] {
+        return itemListDelegate?.toDoItems.filter({ $0.isLongTerm && !$0.isHighPriority }) ?? []
     }
     
     private var selectedItems = [ToDoItem]()
@@ -44,8 +52,30 @@ class SelectToDoItemsViewController: UIViewController {
         let lineView = LineView(superViewFrame: topView.frame, yPos: lineViewY)
         topView.addSubview(lineView)
         
+        // Add new item button
+        addNewItemButton.tintColor = UIConstants.offBlack
+        
         // Set up save button
         saveButton.isEnabled = !selectedItems.isEmpty
+    }
+    
+    
+    private func getItemListForSectionAtIndex(_ index: Int) -> [ToDoItem] {
+        switch index {
+        case 0:
+            return highPriorityToDoItems
+        case 1:
+            return shortTermToDoItems
+        case 2:
+            return longTermToDoItems
+        default:
+            return []
+        }
+    }
+    
+    
+    @IBAction func pressAddNewItemButton(_ sender: UIButton) {
+        performSegue(withIdentifier: Segues.showNewItemSegue.rawValue, sender: self)
     }
     
     
@@ -69,6 +99,20 @@ class SelectToDoItemsViewController: UIViewController {
         return wasSelectionSuccessful
     }
     
+    
+    private func reloadData() {
+        tableView.reloadData()
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let newItemViewController = segue.destination as? NewItemViewController {
+            newItemViewController.itemListMode = .toDoItems
+            newItemViewController.itemListDelegate = itemListDelegate
+            newItemViewController.saveClosure = reloadData
+        }
+    }
+
 }
 
 
@@ -78,45 +122,69 @@ class SelectToDoItemsViewController: UIViewController {
 extension SelectToDoItemsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 3
     }
 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return toDoItems.count
+        let selectedList = getItemListForSectionAtIndex(section)
+        return selectedList.count
+    }
+    
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0:
+            return Localization.getStringForKey(.highPriorityTitle)
+        case 1:
+            return Localization.getStringForKey(.shortTermTitle)
+        case 2:
+            return Localization.getStringForKey(.longTermTitle)
+        default:
+            return nil
+        }
+    }
+    
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = tableView.headerView(forSection: section)
+        return view
     }
     
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        TableViewFooterView()
+        section == 2 ? TableViewFooterView() : nil
     }
     
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        UIConstants.tableViewFooterHeight
+        section == 2 ? UIConstants.tableViewFooterHeight : 0
     }
-
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ItemTableViewCell.reuseIdentifier, for: indexPath) as? ItemTableViewCell else { return UITableViewCell() }
-        let toDoItem = toDoItems[indexPath.row]
+        let itemList = getItemListForSectionAtIndex(indexPath.section)
         
+        let toDoItem = itemList[indexPath.row]
         cell.itemName = toDoItem.name
-        cell.setUpCell(numItems: toDoItems.count, position: indexPath.row)
+        cell.setUpCell(numItems: itemList.count, position: indexPath.row)
         
         return cell
     }
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedItem = toDoItems[indexPath.row]
+        let itemList = getItemListForSectionAtIndex(indexPath.section)
+        let selectedItem = itemList[indexPath.row]
         selectedItems.append(selectedItem)
         saveButton.isEnabled = !selectedItems.isEmpty
     }
     
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        let unselectedItem = toDoItems[indexPath.row]
+        let itemList = getItemListForSectionAtIndex(indexPath.section)
+        let unselectedItem = itemList[indexPath.row]
         if let itemIndex = selectedItems.firstIndex(of: unselectedItem) {
             selectedItems.remove(at: itemIndex)
         }

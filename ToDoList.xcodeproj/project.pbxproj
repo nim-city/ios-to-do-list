@@ -22,7 +22,7 @@
 		7272F1C629A18ADB004448F5 /* ToDoListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7272F1C529A18ADB004448F5 /* ToDoListTests.swift */; };
 		7272F1D029A18ADB004448F5 /* ToDoListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7272F1CF29A18ADB004448F5 /* ToDoListUITests.swift */; };
 		7272F1D229A18ADB004448F5 /* ToDoListUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7272F1D129A18ADB004448F5 /* ToDoListUITestsLaunchTests.swift */; };
-		7272F1E629A18CFC004448F5 /* Tasks.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7272F1E529A18CFC004448F5 /* Tasks.txt */; };
+		7272F1E629A18CFC004448F5 /* ToDoTasks.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7272F1E529A18CFC004448F5 /* ToDoTasks.txt */; };
 		7272F1E829A18EAF004448F5 /* VersioningNotes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7272F1E729A18EAF004448F5 /* VersioningNotes.txt */; };
 		7272F1EA29A2E87B004448F5 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7272F1E929A2E87B004448F5 /* MainTabBarController.swift */; };
 		7272F1EC29A2E8C8004448F5 /* ToDoItemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7272F1EB29A2E8C8004448F5 /* ToDoItemsTableViewController.swift */; };
@@ -78,7 +78,7 @@
 		7272F1CB29A18ADB004448F5 /* ToDoListUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoListUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7272F1CF29A18ADB004448F5 /* ToDoListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListUITests.swift; sourceTree = "<group>"; };
 		7272F1D129A18ADB004448F5 /* ToDoListUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		7272F1E529A18CFC004448F5 /* Tasks.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Tasks.txt; sourceTree = "<group>"; };
+		7272F1E529A18CFC004448F5 /* ToDoTasks.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = ToDoTasks.txt; sourceTree = "<group>"; };
 		7272F1E729A18EAF004448F5 /* VersioningNotes.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = VersioningNotes.txt; sourceTree = "<group>"; };
 		7272F1E929A2E87B004448F5 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		7272F1EB29A2E8C8004448F5 /* ToDoItemsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemsTableViewController.swift; sourceTree = "<group>"; };
@@ -122,13 +122,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		725C97AB29CD75DC00A9A29D /* Components */ = {
+		725C97AB29CD75DC00A9A29D /* UniversalViews */ = {
 			isa = PBXGroup;
 			children = (
 				72C64BC729CACDDE00C0E398 /* LineView.swift */,
 				725C97AC29CD762100A9A29D /* TableViewFooterView.swift */,
+				72F6E6E229C2E5AB00F7A92C /* UIExtensions.swift */,
 			);
-			path = Components;
+			path = UniversalViews;
 			sourceTree = "<group>";
 		};
 		7272F19F29A18AD9004448F5 = {
@@ -186,13 +187,12 @@
 		7272F1DE29A18B50004448F5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				725C97AB29CD75DC00A9A29D /* Components */,
+				725C97AB29CD75DC00A9A29D /* UniversalViews */,
 				7272F1E029A18B8F004448F5 /* MainScreen */,
 				7272F1E329A18C7B004448F5 /* TodaysAgenda */,
 				7272F1F429A2E968004448F5 /* AllItems */,
 				7272F1FE29A56304004448F5 /* TableViewCells */,
 				7272F1DF29A18B5D004448F5 /* StoryboardsAndNibs */,
-				72F6E6E229C2E5AB00F7A92C /* UIExtensions.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -228,7 +228,7 @@
 		7272F1E429A18CD1004448F5 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				7272F1E529A18CFC004448F5 /* Tasks.txt */,
+				7272F1E529A18CFC004448F5 /* ToDoTasks.txt */,
 				7272F1E729A18EAF004448F5 /* VersioningNotes.txt */,
 			);
 			path = Configuration;
@@ -383,7 +383,7 @@
 				7272F1BB29A18ADB004448F5 /* LaunchScreen.storyboard in Resources */,
 				7272F1E829A18EAF004448F5 /* VersioningNotes.txt in Resources */,
 				721E5BC129DBDB40008C47E1 /* Localizable.strings in Resources */,
-				7272F1E629A18CFC004448F5 /* Tasks.txt in Resources */,
+				7272F1E629A18CFC004448F5 /* ToDoTasks.txt in Resources */,
 				7272F1B829A18ADB004448F5 /* Assets.xcassets in Resources */,
 				725C97AF29D2208900A9A29D /* ItemTableViewCell.xib in Resources */,
 				7272F1B329A18AD9004448F5 /* Main.storyboard in Resources */,
