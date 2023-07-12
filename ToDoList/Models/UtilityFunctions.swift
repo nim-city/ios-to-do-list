@@ -14,6 +14,7 @@ class Localization {
         case no
         case cancel
         case delete
+        case remove
         
         // Pop ups
         case clearTodaysAgendaText = "pop_up_text_clear_todays_agenda"

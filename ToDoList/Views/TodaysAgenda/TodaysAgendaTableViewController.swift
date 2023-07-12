@@ -29,6 +29,19 @@ class TodaysAgendaViewController: UIViewController {
     func reloadData() {
         tableView.reloadData()
     }
+    
+    
+    private func showDeleteAlertForItem(_ toDoItem: ToDoItem) {
+        let alertController = UIAlertController(title: Localization.getStringForKey(.deleteItemText), message: nil, preferredStyle: .actionSheet)
+        let deleteAction = UIAlertAction(title: Localization.getStringForKey(.yes), style: .destructive, handler: { [weak self] _ in
+            let _ = ToDoItemFunctions.instance.deleteToDoItem(toDoItem)
+            self?.itemListDelegate?.itemListWasChanged()
+        })
+        let cancelAction = UIAlertAction(title: Localization.getStringForKey(.no), style: .cancel, handler: nil)
+        alertController.addAction(deleteAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
+    }
 }
 
 
@@ -76,11 +89,23 @@ extension TodaysAgendaViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteSwipeAction = UIContextualAction(style: .destructive, title: Localization.getStringForKey(.delete), handler: { [weak self] _, _, _ in
             guard let toDoItem = self?.toDoItems[indexPath.row] else { return }
-            let _ = TodaysAgendaFunctions.instance.unselectItem(toDoItem)
-            self?.reloadData()
+            self?.showDeleteAlertForItem(toDoItem)
         })
         deleteSwipeAction.image = UIImage(systemName: UIConstants.trashImage)
         let swipeActionConfiguration = UISwipeActionsConfiguration(actions: [deleteSwipeAction])
+        swipeActionConfiguration.performsFirstActionWithFullSwipe = true
+        return swipeActionConfiguration
+    }
+    
+    
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let removeSwipeAction = UIContextualAction(style: .destructive, title: Localization.getStringForKey(.remove), handler: { [weak self] _, _, _ in
+            guard let toDoItem = self?.toDoItems[indexPath.row] else { return }
+            let _ = TodaysAgendaFunctions.instance.unselectItem(toDoItem)
+            self?.reloadData()
+        })
+        removeSwipeAction.image = UIImage(systemName: UIConstants.eraserImage)
+        let swipeActionConfiguration = UISwipeActionsConfiguration(actions: [removeSwipeAction])
         swipeActionConfiguration.performsFirstActionWithFullSwipe = true
         return swipeActionConfiguration
     }

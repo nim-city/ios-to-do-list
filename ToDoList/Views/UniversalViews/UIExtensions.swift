@@ -40,6 +40,7 @@ class UIConstants {
     
     // Image names
     static let trashImage = "trash.fill"
+    static let eraserImage = "eraser.line.dashed.fill"
     
     
     // Fonts

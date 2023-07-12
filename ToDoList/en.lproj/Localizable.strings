@@ -11,6 +11,7 @@
 "no" = "No";
 "cancel" = "Cancel";
 "delete" = "Delete";
+"remove" = "Remove";
 
 // Pop ups
 "pop_up_text_clear_todays_agenda" = "Remove all items from today's agenda?";
