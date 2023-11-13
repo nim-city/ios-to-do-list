@@ -37,6 +37,7 @@
 		7272F20729A5FE2A004448F5 /* ToDoItemFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7272F20629A5FE2A004448F5 /* ToDoItemFunctions.swift */; };
 		7272F20A29AE8524004448F5 /* ToBuyItemFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7272F20929AE8524004448F5 /* ToBuyItemFunctions.swift */; };
 		7272F20C29B9CE5C004448F5 /* CoreDataFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7272F20B29B9CE5C004448F5 /* CoreDataFunctions.swift */; };
+		72AE74362A5E57490040B8A6 /* ListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AE74352A5E57490040B8A6 /* ListItem.swift */; };
 		72C64BC829CACDDE00C0E398 /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C64BC729CACDDE00C0E398 /* LineView.swift */; };
 		72F6E6E329C2E5AB00F7A92C /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F6E6E229C2E5AB00F7A92C /* UIExtensions.swift */; };
 /* End PBXBuildFile section */
@@ -93,6 +94,7 @@
 		7272F20629A5FE2A004448F5 /* ToDoItemFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemFunctions.swift; sourceTree = "<group>"; };
 		7272F20929AE8524004448F5 /* ToBuyItemFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToBuyItemFunctions.swift; sourceTree = "<group>"; };
 		7272F20B29B9CE5C004448F5 /* CoreDataFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataFunctions.swift; sourceTree = "<group>"; };
+		72AE74352A5E57490040B8A6 /* ListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItem.swift; sourceTree = "<group>"; };
 		72C64BC729CACDDE00C0E398 /* LineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
 		72F6E6E229C2E5AB00F7A92C /* UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -252,6 +254,7 @@
 				7272F20129A568C1004448F5 /* ItemListMode.swift */,
 				7272F20429A5A04C004448F5 /* ItemListDelegate.swift */,
 				721E5BBF29DBCD69008C47E1 /* UtilityFunctions.swift */,
+				72AE74352A5E57490040B8A6 /* ListItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 				7272F20029A56321004448F5 /* ItemTableViewCell.swift in Sources */,
 				7272F1F029A2E910004448F5 /* TodaysAgendaTableViewController.swift in Sources */,
 				7272F20A29AE8524004448F5 /* ToBuyItemFunctions.swift in Sources */,
+				72AE74362A5E57490040B8A6 /* ListItem.swift in Sources */,
 				7272F20729A5FE2A004448F5 /* ToDoItemFunctions.swift in Sources */,
 				7272F1EA29A2E87B004448F5 /* MainTabBarController.swift in Sources */,
 				7272F20229A568C1004448F5 /* ItemListMode.swift in Sources */,

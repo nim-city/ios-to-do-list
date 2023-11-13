@@ -18,8 +18,17 @@ class NewItemViewController: UIViewController {
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     
-    private let foregroundViewOffset: CGFloat = -80
+    private var foregroundViewOffset: CGFloat {
+        if previousViewController is SelectToDoItemsViewController {
+            return -120
+        } else if itemListMode == .toDoItems {
+            return -90
+        } else {
+            return -60
+        }
+    }
     
+    var previousViewController: UIViewController?
     var itemListMode: ItemListMode = .toDoItems
     
     weak var itemListDelegate: ItemListDelegate?

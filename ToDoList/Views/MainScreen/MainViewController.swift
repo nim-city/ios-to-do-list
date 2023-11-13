@@ -74,6 +74,7 @@ class MainViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let newItemViewController = segue.destination as? NewItemViewController {
+            newItemViewController.previousViewController = self
             newItemViewController.itemListMode = currentItemListMode
             newItemViewController.itemListDelegate = self
         } else if let selectItemsViewController = segue.destination as? SelectToDoItemsViewController {

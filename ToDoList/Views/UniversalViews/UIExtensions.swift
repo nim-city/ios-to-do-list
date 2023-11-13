@@ -62,3 +62,19 @@ extension UIView {
     
 }
 
+
+extension UIViewController {
+    
+    func showDeleteItemPopUp(forItem item: ListItem, title: String, completion: @escaping () -> Void) {
+        let alertController = UIAlertController(title: title, message: nil, preferredStyle: .actionSheet)
+        let deleteAction = UIAlertAction(title: Localization.getStringForKey(.yes), style: .destructive, handler: { _ in
+            completion()
+        })
+        let cancelAction = UIAlertAction(title: Localization.getStringForKey(.no), style: .cancel, handler: nil)
+        alertController.addAction(deleteAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+}
+

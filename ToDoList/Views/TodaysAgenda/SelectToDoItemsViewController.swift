@@ -107,6 +107,7 @@ class SelectToDoItemsViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let newItemViewController = segue.destination as? NewItemViewController {
+            newItemViewController.previousViewController = self
             newItemViewController.itemListMode = .toDoItems
             newItemViewController.itemListDelegate = itemListDelegate
             newItemViewController.saveClosure = reloadData

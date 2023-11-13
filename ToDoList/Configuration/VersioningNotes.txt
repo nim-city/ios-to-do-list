@@ -1,4 +1,8 @@
-Current version: 1.1
+Current version: 1.2
+
+Version 1.2
+- Added complete task functionality that removes item from today's agenda but doesn't delete it
+- Improved spacing between keyboard and add item dialog
 
 Version 1.1
 - Fixed bug where today's agenda items were being deleted permanently upon removal
